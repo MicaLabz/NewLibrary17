@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        /*httpSecurity.csrf().disable()
+        httpSecurity.csrf().disable()
                 //PERMISOS
                 //SITIOS A LOS QUE CUALQUIERA PUEDE INGRESAR
                 .authorizeRequests()
@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 //SITIOS A LOS QUE CUALQUIER USUARIO AUTORIZADO PUEDE INGRESAR
                 .authorizeRequests()
-                .antMatchers()
+                .antMatchers("/authors/**","/publishers/**","/books/**","/loans/**","/clients/**")
                 .authenticated()
                 .and()
 
@@ -58,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                                     ex.getMessage()
                             );
                         }
-                );*/
+                );
 
 
 
