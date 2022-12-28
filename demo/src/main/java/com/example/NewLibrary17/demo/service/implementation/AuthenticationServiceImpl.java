@@ -47,7 +47,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if ( existingClient != null ) {
             if ( existingClient.getSoftDelete() == Boolean.TRUE) {
                 existingClient.setSoftDelete( Boolean.FALSE );
-                //clientService.reactivateAccount(existingUser);
+                clientService.reactivateClient(existingClient);
                 token = jwtUtil.generateToken(existingClient);
                 return ResponseEntity.status( HttpStatus.OK ).body(clientMapper.convertToRegisteredDto(existingClient,token) );
             }else {
