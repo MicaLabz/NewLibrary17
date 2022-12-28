@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,5 +19,8 @@ public class ClientDetailDto {
 
     @JsonProperty("email")
     private String email;
+
+    @JsonProperty("phoneNumber")
+    private String phoneNumber;
 
 }

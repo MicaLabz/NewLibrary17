@@ -17,7 +17,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -113,8 +112,8 @@ public class ClientServiceImpl implements ClientService {
         String jwt = token.substring(7);
         String email = jwtUtil.extractUserName(jwt);
         Client client = loadUserByUsername(email);
-        if(client.getClientId().equals(id)){
-            return client;
+        if(client.getClientId().equals(id) || client.getRole().getName().name().equals("ADMIN")){
+            return getClientById(id);
         }else{
             throw new ForbiddenAccessException("Cannot access another client details");
         }
@@ -155,6 +154,7 @@ public class ClientServiceImpl implements ClientService {
         client.setPassword(passEncoded);
         Timestamp timestamp=new Timestamp(new Date().getTime());
         client.setUpdateDate(timestamp);
+        client.setPhoneNumber(clientUpdateDto.getPhoneNumber());
         clientRepository.save(client);
         return clientMapper.convertToUpdateDto(client);
     }
