@@ -2,7 +2,6 @@ package com.example.NewLibrary17.demo.mapper;
 
 import com.example.NewLibrary17.demo.dto.*;
 import com.example.NewLibrary17.demo.model.Author;
-import com.example.NewLibrary17.demo.model.Client;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -27,6 +26,10 @@ public class AuthorMapper {
         author.setName(authorRequestDto.getName());
 
         return author;
+    }
+
+    public AuthorRegisteredDto convertToRegisteredDto(Author author, String token){
+        return new AuthorRegisteredDto(author.getAuthorId(),author.getName(),author.getSoftDelete());
     }
 
     public AuthorDetailDto convertToDetailDto(Author author ) {

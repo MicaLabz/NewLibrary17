@@ -4,11 +4,11 @@ import com.example.NewLibrary17.demo.dto.*;
 import com.example.NewLibrary17.demo.exception.ForbiddenAccessException;
 import com.example.NewLibrary17.demo.exception.ResourceNotFoundException;
 import com.example.NewLibrary17.demo.model.Author;
-import com.example.NewLibrary17.demo.model.Client;
+import org.springframework.http.ResponseEntity;
 
 public interface AuthorService {
 
-    AuthorDto createAuthor(String token, AuthorRequestDto authorRequestDto) throws ForbiddenAccessException;
+    ResponseEntity<AuthorRegisteredDto> createAuthor(String token, AuthorRequestDto authorRequestDto) throws ForbiddenAccessException;
 
     AuthorUpdateDto updateAuthor(Integer id, AuthorUpdateDto authorUpdateDtoUpdateDto, String token) throws ForbiddenAccessException;
 
@@ -16,7 +16,7 @@ public interface AuthorService {
 
     void reactivateAuthor(Author author);
 
-    AuthorPaginatedDto getAllAuthors(Integer page, String token) throws ForbiddenAccessException;
+    AuthorPaginatedDto getAllAuthors(Integer page);
 
     Author getAuthorById(Integer id);
 

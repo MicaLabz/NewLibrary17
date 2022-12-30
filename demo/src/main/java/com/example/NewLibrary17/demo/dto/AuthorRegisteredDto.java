@@ -8,10 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorUpdateDto {
+public class AuthorRegisteredDto {
 
     @JsonProperty("authorId")
     private Integer authorId;
+
     @JsonProperty("name")
-    String name;
+    private String name;
+
+    @JsonProperty("softDelete")
+    private Boolean softDelete;
 }
