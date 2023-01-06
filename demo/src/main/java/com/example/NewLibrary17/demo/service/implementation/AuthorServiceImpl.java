@@ -1,7 +1,7 @@
 package com.example.NewLibrary17.demo.service.implementation;
 
 import com.example.NewLibrary17.demo.dto.*;
-import com.example.NewLibrary17.demo.exception.AlreadyExistingAuthorException;
+import com.example.NewLibrary17.demo.exception.AlreadyExistingThingException;
 import com.example.NewLibrary17.demo.exception.ForbiddenAccessException;
 import com.example.NewLibrary17.demo.exception.ResourceNotFoundException;
 import com.example.NewLibrary17.demo.exception.SoftDeleteException;
@@ -52,7 +52,7 @@ public class AuthorServiceImpl implements AuthorService {
                     System.out.println("here");
                     return ResponseEntity.status( HttpStatus.OK ).body(authorMapper.convertToRegisteredDto(existingAuthor, token) );
                 }else if (getAuthorByName(authorRequestDto.getName()).getName().equals(authorRequestDto.getName())) {
-                    throw new AlreadyExistingAuthorException("Author with that name already exist");
+                    throw new AlreadyExistingThingException("Author with that name already exist");
                 }
             }else{
                 Author author = new Author();
@@ -77,7 +77,7 @@ public class AuthorServiceImpl implements AuthorService {
             if (existingAuthor != null || existingAuthor1.getSoftDelete().equals(Boolean.TRUE)) {
                 throw new SoftDeleteException("Cannot access the author");
             } else if (authorUpdateDto.getName().equals(getAuthorByName(authorUpdateDto.getName()).getName())) {
-                throw new AlreadyExistingAuthorException("Author with that name already exist");
+                throw new AlreadyExistingThingException("Author with that name already exist");
             } else {
                 Author author = this.getAuthorById(id);
                 author.setName(authorUpdateDto.getName());

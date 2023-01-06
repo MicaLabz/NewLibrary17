@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class AuthorDto {
 
     @JsonProperty( "id" )
-    private Integer authorID;
+    private Integer authorId;
 
     @JsonProperty( "name")
     private String name;
