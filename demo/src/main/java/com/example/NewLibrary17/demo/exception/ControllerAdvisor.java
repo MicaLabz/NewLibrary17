@@ -14,8 +14,8 @@ import java.util.Map;
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(AlreadyExistingAuthorException.class)
-    public ResponseEntity<Object> handleExistingAuthorException(AlreadyExistingAuthorException ex, WebRequest request){
+    @ExceptionHandler(AlreadyExistingThingException.class)
+    public ResponseEntity<Object> handleExistingAuthorException(AlreadyExistingThingException ex, WebRequest request){
         Map<String, Object> body = new LinkedHashMap<>();
 
         body.put("timestamp", LocalDateTime.now());
