@@ -40,4 +40,10 @@ public class PublisherMapper {
 
     public PublisherUpdateDto convertToUpdateDto(Publisher publisher){
         return mapper.map(publisher, PublisherUpdateDto.class );}
+
+    public Publisher convertUpdateDtoToEntity(PublisherUpdateDto publisherUpdateDto){
+        Publisher publisher= new Publisher();
+        publisher.setName(publisherUpdateDto.getName());
+        return publisher;
+    }
 }
