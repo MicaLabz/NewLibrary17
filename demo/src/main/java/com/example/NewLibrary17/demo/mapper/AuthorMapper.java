@@ -38,4 +38,11 @@ public class AuthorMapper {
 
     public AuthorUpdateDto convertToUpdateDto(Author author){
         return mapper.map( author, AuthorUpdateDto.class );}
+
+    public Author convertUpdateDtoToEntity(AuthorUpdateDto authorUpdateDto){
+        Author author = new Author();
+        author.setName(authorUpdateDto.getName());
+
+        return author;
+    }
 }

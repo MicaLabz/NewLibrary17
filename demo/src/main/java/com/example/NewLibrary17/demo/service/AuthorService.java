@@ -10,7 +10,7 @@ public interface AuthorService {
 
     ResponseEntity<AuthorRegisteredDto> createAuthor(String token, AuthorRequestDto authorRequestDto) throws ForbiddenAccessException;
 
-    AuthorUpdateDto updateAuthor(Integer id, AuthorUpdateDto authorUpdateDtoUpdateDto, String token) throws ForbiddenAccessException;
+    AuthorUpdateDto updateAuthor(Integer id, AuthorUpdateDto authorUpdateDto, String token) throws ForbiddenAccessException;
 
     void deleteAuthor(Integer id, String token) throws ResourceNotFoundException, ForbiddenAccessException;
 
