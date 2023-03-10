@@ -1,9 +1,10 @@
 package com.example.NewLibrary17.demo.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 
 import static java.lang.Boolean.FALSE;
 
@@ -12,6 +13,7 @@ import static java.lang.Boolean.FALSE;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "BOOKS")
+@SQLDelete( sql = "UPDATE books SET soft_delete = true WHERE BOOK_ID=?" )
 public class Book {
 
     @Id
